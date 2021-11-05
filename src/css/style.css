@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+form {
+  margin: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 10% auto;
+  justify-content: center;
+  background-color: white;
+  height: 100%;
+  width: 35%;
+  z-index: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.45);
+}
+.form-group {
+  margin: 20px;
+}
+.login-btn {
+  display: flex;
+  justify-content: center;
+}
+.form-header {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+}
+.page-not-found {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  font-weight: bold;
+  color: #f00;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-between;
+  border: none;
+}
+.role {
+  margin-right: 10px;
+}
+.main {
+  display: flex;
+  margin: 10% 20%;
+
+  flex-direction: column;
+}
+.table-container {
+  background-color: white;
+  height: 100%;
+  width: 80%;
+
+  z-index: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.45);
+}
+.addUser .btn {
+  margin: 10px;
+}
+.actions .btn {
+  margin-right: 5px;
+}
+
+.list-student{
+  background-color: white;
+  height: 100%;
+  width: 80%;
+  z-index: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.45);
+}
