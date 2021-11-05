@@ -13,27 +13,19 @@ export const CreateRole = () => {
         <div className="form-group">
          
           <input
-            type="email"
+            type="text"
             className="form-control"
-            id="exampleInputEmail1"
-            placeholder="Email"
-            aria-describedby="emailHelp"
+            id="role"
+            placeholder="Role"
+            aria-describedby="add role"
           />
       
         </div>
-        <div className="form-group">
         
-          <input
-            type="password"
-            className="form-control"
-            id="exampleInputPassword1"
-            placeholder="Password"
-          />
-        </div>
       
       <div className='btn' > 
       <button type="submit"  className="btn btn-primary">
-          Add User
+          Add role
         </button>
       </div>
         

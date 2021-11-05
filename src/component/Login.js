@@ -31,8 +31,8 @@ export const Login = () => {
           />
         </div>
       
-      <div className='' > 
-      <button type="submit"  className=" login-btn btn-primary">
+      <div className='login-btn' > 
+      <button type="submit"  className=" btn  btn-primary">
           Submit
         </button>
       </div>

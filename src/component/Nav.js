@@ -1,7 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import '../css/style.css'
+import { Link, useNavigate } from "react-router-dom";
+
+import "../css/style.css";
 export const Nav = () => {
+  const navigate = useNavigate();
+  const logoutHandler = (e) => {
+    navigate('/')
+  };
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -33,15 +38,17 @@ export const Nav = () => {
               <Link to="/addUser" className="nav-link">
                 create user
               </Link>
-              
             </li>
             <li className="nav-item active">
               <Link to="/students" className="nav-link">
                 View students
               </Link>
-              
             </li>
-            
+            <li className="nav-item active">
+              <Link to="/login" className="nav-link" >
+                Logout
+              </Link>
+            </li>
           </ul>
         </div>
       </nav>
