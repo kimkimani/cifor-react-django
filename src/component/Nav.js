@@ -4,9 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "../css/style.css";
 export const Nav = () => {
   const navigate = useNavigate();
-  const logoutHandler = (e) => {
-    navigate('/')
-  };
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
