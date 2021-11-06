@@ -28,13 +28,20 @@ export const listPermission = (token) => {
   );
 };
 
+export const listRoles = (token) => {
+  return fetch("https://icraf-interview-wmugc.ondigitalocean.app/list-roles", {
+    method: "GET",
+    headers: { Authorization: `token ${token}` },
+  });
+};
 
-  export const listRoles = (token) => {
-    return fetch(
-        "https://icraf-interview-wmugc.ondigitalocean.app/list-roles",
-        {
-          method: "GET",
-          headers: { Authorization: `token ${token}` },
-        }
-      )
+export const createStudent = (token,data) => {
+  return  fetch("https://icraf-interview-wmugc.ondigitalocean.app/create-student/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        headers: { Authorization: `token ${token}` },
+      },
+      body: JSON.stringify(data),
+    })
   };

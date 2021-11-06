@@ -4,11 +4,13 @@ import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 export const CreateStudent = () => {
   const [state, setstate] = useState([]);
+  const token = JSON.parse(localStorage.getItem("user")).token;
   async function createUser(data) {
     return fetch("https://icraf-interview-wmugc.ondigitalocean.app/create-student/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        headers: { Authorization: `token ${token}` },
       },
       body: JSON.stringify(data),
     }).then((data) => data.json());
@@ -32,8 +34,8 @@ export const CreateStudent = () => {
         
       }
       else{
-        localStorage.setItem("user", JSON.stringify(data));
-        window.location.href = "/login";
+   
+        window.location.href = "/";
       }
       
       })
