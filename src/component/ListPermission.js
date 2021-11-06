@@ -1,19 +1,19 @@
 import React,{useState,useEffect} from 'react'
 
-export const ListStudents = () => {
+export const ListPermission = () => {
   const [state, setstate] = useState([]);
 
   const token =JSON.parse(localStorage.getItem('user')).token
   console.log(token)
-  async function listStudents() {
-    return fetch("https://icraf-interview-wmugc.ondigitalocean.app/list-students", {
+  async function listPermission() {
+    return fetch("https://icraf-interview-wmugc.ondigitalocean.app/list-all-permissions", {
       method: "GET",
       headers: {"Authorization" : `token ${token}`}
      
     }).then((data) => data.json());
   }
   useEffect(() => {
-    listStudents().then((data) => {
+    listPermission().then((data) => {
       console.log(data);
      
       setstate(data);
@@ -27,7 +27,7 @@ export const ListStudents = () => {
   <thead>
     <tr>
       <th scope="col">#id</th>
-      <th scope="col">First</th>
+      <th scope="col">Name</th>
     
     </tr>
   </thead>
@@ -35,7 +35,7 @@ export const ListStudents = () => {
   {state.map((student,index)=>{
     return(<tr key={index}>
       <th scope="row">{student.id}</th>
-      <td>{student.student_name}</td>
+      <td>{student.name}</td>
      
     </tr>)
   })}

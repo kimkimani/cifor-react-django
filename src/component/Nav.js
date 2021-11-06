@@ -4,6 +4,10 @@ import { Link, useNavigate } from "react-router-dom";
 import "../css/style.css";
 export const Nav = () => {
   const navigate = useNavigate();
+  const logout = () => {
+    localStorage.removeItem("user");
+    navigate("/login");
+  };
 
   return (
     <div>
@@ -43,9 +47,40 @@ export const Nav = () => {
               </Link>
             </li>
             <li className="nav-item active">
-              <Link to="/login" className="nav-link" >
-                Logout
+              <Link to="/create-student" className="nav-link">
+                create students
               </Link>
+            </li>
+
+            <li className="nav-item active">
+              <Link to="/roles" className="nav-link">
+                View Roles
+              </Link>
+            </li>
+            <li className="nav-item active">
+              <Link to="/permissions" className="nav-link">
+                View permissions
+              </Link>
+            </li>
+            <li className="nav-item active">
+              <Link to="/content-type" className="nav-link">
+                View content type
+              </Link>
+            </li>
+            <li className="nav-item active">
+              <Link to="/create-permission" className="nav-link">
+               Create Permission
+              </Link>
+            </li>
+            <li className="nav-item active">
+              <Link to="/assign-role" className="nav-link">
+               Assign Role
+              </Link>
+            </li>
+            <li className="nav-item active">
+              <a href="/login" className="nav-link" onClick={logout}>
+                Logout
+              </a>
             </li>
           </ul>
         </div>
