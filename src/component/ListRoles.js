@@ -1,44 +1,23 @@
 import React, { useState, useEffect } from "react";
+import { listRoles, listPermission } from "../apis/apis";
 
 export const ListRoles = () => {
   const [state, setstate] = useState([]);
-
-  const token = JSON.parse(localStorage.getItem("user")).token;
-  console.log(token);
-  async function listRoles() {
-    return fetch(
-      "https://icraf-interview-wmugc.ondigitalocean.app/list-roles",
-      {
-        method: "GET",
-        headers: { Authorization: `token ${token}` },
-      }
-    ).then((data) => data.json());
-  }
-  useEffect(() => {
-    listRoles().then((data) => {
-      console.log(data);
-
-      setstate(data);
-    });
-  }, []);
   const [permission, setPermissions] = useState([]);
+  const token = JSON.parse(localStorage.getItem("user")).token;
 
-  async function listPermission() {
-    return fetch(
-      "https://icraf-interview-wmugc.ondigitalocean.app/list-all-permissions",
-      {
-        method: "GET",
-        headers: { Authorization: `token ${token}` },
-      }
-    ).then((data) => data.json());
-  }
   useEffect(() => {
-    listPermission().then((data) => {
-      console.log(data);
-
-      setPermissions(data);
-    });
+    loadData();
   }, []);
+
+  const loadData = async () => {
+    const response = await listRoles(token);
+    const data = await response.json();
+     const responsePermission = await listPermission(token);
+    const dataPermission = await responsePermission.json();
+    setstate(data);
+    setPermissions(dataPermission);
+  };
 
   return (
     <div className="main">
