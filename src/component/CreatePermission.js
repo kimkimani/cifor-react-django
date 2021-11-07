@@ -8,7 +8,7 @@ export const CreatePermission = () => {
   const [contentType, setcontentType] = useState([]);
 
   const token = isAuthenticated().token;
-  console.log(token);
+
   async function listRoles() {
     return fetch(
       "https://icraf-interview-wmugc.ondigitalocean.app/list-content-types",
@@ -20,11 +20,9 @@ export const CreatePermission = () => {
   }
   useEffect(() => {
     listRoles().then((data) => {
-      console.log(data);
-
       setcontentType(data);
     });
-  },);
+  });
   async function createUser(data) {
     const token = JSON.parse(localStorage.getItem("user")).token;
     return fetch(
@@ -50,12 +48,10 @@ export const CreatePermission = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log(state);
+
     createUser(state)
       .then((data) => {
-        console.log(data);
         if (data.detail) {
-          console.log(data.detail);
           setstate({ ...state, error: data.detail });
         } else {
           setstate({ ...state, error: false });
@@ -64,11 +60,11 @@ export const CreatePermission = () => {
       .catch((error) => {
         console.log(error);
       });
-      setstate({
-        name: "",
-        content_type: "",
-        permission: "",
-      });
+    setstate({
+      name: "",
+      content_type: "",
+      permission: "",
+    });
   };
 
   return (
@@ -103,11 +99,21 @@ export const CreatePermission = () => {
             </div>
             <div className="form-group">
               <label htmlFor="role">content type</label>
-              <select name="content_type" className="form-select" onChange={onChange} aria-label="Default select example" >
+              <select
+                name="content_type"
+                className="form-select"
+                onChange={onChange}
+                aria-label="Default select example"
+              >
                 <option selected>Open this select menu</option>
-                {contentType&&contentType.map((item, index) => {
-                  return <option key={index}   value={item.id} >{item.app_label}</option>;
-                })}
+                {contentType &&
+                  contentType.map((item, index) => {
+                    return (
+                      <option key={index} value={item.id}>
+                        {item.app_label}
+                      </option>
+                    );
+                  })}
               </select>
 
               <div id="error" className="form-text login-error text-danger">

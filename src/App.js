@@ -4,11 +4,10 @@ import { isAuthenticated } from './apis/apis';
 import { Nav } from './component/Nav';
 import {  Unauthorized } from './component/Unauthorized';
 import routes from "./routes";
-import { useNavigate } from "react-router-dom";
-import { Home } from './component/Home';
+
 export const App = () => {
    
-// console.log()
+
     return(
         <BrowserRouter>
            <Nav/>

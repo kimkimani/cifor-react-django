@@ -1,33 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { isAuthenticated } from "../apis/apis";
 export const AssignRole = () => {
-
-
- 
   const [state, setstate] = useState([]);
 
   const token = isAuthenticated().token;
-  
 
   async function listPermission() {
-    return fetch("https://icraf-interview-wmugc.ondigitalocean.app/list-all-permissions", {
-      method: "GET",
-      headers: {"Authorization" : `token ${token}`}
-     
-    }).then((data) => data.json());
+    return fetch(
+      "https://icraf-interview-wmugc.ondigitalocean.app/list-all-permissions",
+      {
+        method: "GET",
+        headers: { Authorization: `token ${token}` },
+      }
+    ).then((data) => data.json());
   }
   useEffect(() => {
     listPermission().then((data) => {
-      console.log(state);
-     
       setstate(data);
     });
-  },);
-  
-
-  
-
-  
+  });
 
   return (
     <div className="main">
@@ -46,9 +37,7 @@ export const AssignRole = () => {
               <th scope="row">1</th>
               <td>Test USer</td>
 
-              <td>
-               
-              </td>
+              <td></td>
               <td>
                 <div className="actions">
                   {/* <Link to="/view" className="btn btn-success">
