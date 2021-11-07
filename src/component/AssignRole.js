@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { isAuthenticated } from "../apis/apis";
 export const AssignRole = () => {
 
 
-  const [selectedOptions, setSelectedOptions] = useState([]);
+ 
   const [state, setstate] = useState([]);
 
-  const token =JSON.parse(localStorage.getItem('user')).token
+  const token = isAuthenticated().token;
+  
 
   async function listPermission() {
     return fetch("https://icraf-interview-wmugc.ondigitalocean.app/list-all-permissions", {
@@ -16,11 +18,11 @@ export const AssignRole = () => {
   }
   useEffect(() => {
     listPermission().then((data) => {
-      console.log(data);
+      console.log(state);
      
       setstate(data);
     });
-  }, []);
+  },);
   
 
   

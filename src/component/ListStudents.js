@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { listStudents } from "../apis/apis";
+import { listStudents,isAuthenticated } from "../apis/apis";
 
 export const ListStudents = () => {
   const [state, setstate] = useState([]);
 
-  const token = JSON.parse(localStorage.getItem("user")).token;
+  const token = isAuthenticated().token;
 
   
   useEffect(() => {
    loadData();
   }, 
-  []);
-
+  );
   const loadData = async() =>{
     const response = await listStudents(token);
     const data= await response.json()
@@ -28,7 +27,7 @@ export const ListStudents = () => {
             </tr>
           </thead>
           <tbody>
-            {state.map((student, index) => {
+            {state&&state.map((student, index) => {
               return (
                 <tr key={index}>
                   <th scope="row">{student.id}</th>

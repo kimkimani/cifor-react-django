@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import { isAuthenticated } from "../apis/apis";
 // import "../css/style.css";
+
 
 export const CreateStudent = () => {
   const [state, setstate] = useState([]);
-  const token = JSON.parse(localStorage.getItem("user")).token;
+  const token = isAuthenticated().token;
   async function createUser(data) {
     return fetch("https://icraf-interview-wmugc.ondigitalocean.app/create-student/", {
       method: "POST",

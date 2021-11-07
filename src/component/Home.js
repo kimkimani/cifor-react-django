@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../css/style.css";
 export const Home = () => {
-  const initialState = { data: [] };
-  const [state, setstate] = useState(initialState);
+
+ 
   return (
     <div className='main'>
 

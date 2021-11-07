@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { listPermission } from "../apis/apis";
+import { listPermission,isAuthenticated } from "../apis/apis";
 
 export const ListPermission = () => {
   const [state, setstate] = useState([]);
 
-  const token = JSON.parse(localStorage.getItem("user")).token;
+  const token = isAuthenticated().token;
   useEffect(() => {
     loadData();
-  }, []);
+  });
 
   const loadData = async () => {
     const response = await listPermission(token);
@@ -25,7 +25,7 @@ export const ListPermission = () => {
             </tr>
           </thead>
           <tbody>
-            {state.map((student, index) => {
+            {state&&state.map((student, index) => {
               return (
                 <tr key={index}>
                   <th scope="row">{student.id}</th>

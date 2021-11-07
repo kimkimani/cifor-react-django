@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import { isAuthenticated } from "../apis/apis";
 // import "../css/style.css";
 
 export const CreateRole = () => {
   const [state, setstate] = useState([]);
   async function createUser(data) {
-    const token =JSON.parse(localStorage.getItem('user')).token
+    const token = isAuthenticated().token;
     return fetch("https://icraf-interview-wmugc.ondigitalocean.app/create-role", {
       method: "POST",
       headers: {
@@ -30,9 +31,9 @@ export const CreateRole = () => {
     console.log(state)
         createUser(state)
       .then((data) => {
-        console.log(data);
+       
       if(data.detail){
-        console.log(data.detail);
+      
         setstate({...state, error: data.detail})
         
       }

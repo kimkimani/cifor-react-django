@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import { isAuthenticated } from "../apis/apis";
 // import "../css/style.css";
 
 export const CreatePermission = () => {
   const [state, setstate] = useState([]);
   const [contentType, setcontentType] = useState([]);
 
-  const token = JSON.parse(localStorage.getItem("user")).token;
+  const token = isAuthenticated().token;
   console.log(token);
   async function listRoles() {
     return fetch(
@@ -23,7 +24,7 @@ export const CreatePermission = () => {
 
       setcontentType(data);
     });
-  }, []);
+  },);
   async function createUser(data) {
     const token = JSON.parse(localStorage.getItem("user")).token;
     return fetch(
@@ -104,7 +105,7 @@ export const CreatePermission = () => {
               <label htmlFor="role">content type</label>
               <select name="content_type" className="form-select" onChange={onChange} aria-label="Default select example" >
                 <option selected>Open this select menu</option>
-                {contentType.map((item, index) => {
+                {contentType&&contentType.map((item, index) => {
                   return <option key={index}   value={item.id} >{item.app_label}</option>;
                 })}
               </select>
